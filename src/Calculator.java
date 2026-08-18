@@ -5,36 +5,61 @@ public class Calculator {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
 
-        try {
+            System.out.println("=");
+            System.out.println("     SIMPLE CALCULATOR");
+            System.out.println("=");
 
-            System.out.println("Simple Calculator");
+            System.out.println("+  Addition");
+            System.out.println("-  Subtraction");
+            System.out.println("*  Multiplication");
+            System.out.println("/  Division");
+            System.out.println("%  Modulus");
+            System.out.println("^  Power");
+            System.out.println("s  Square Root");
 
-            System.out.print(
-                "Enter operation (+, -, *, /, %, ^, s for square root): "
-            );
-
+            System.out.print("\nChoose operation: ");
             char operator = scanner.next().charAt(0);
+
+            // Validate the operator before asking for numbers
+            if (
+                operator != '+' &&
+                operator != '-' &&
+                operator != '*' &&
+                operator != '/' &&
+                operator != '%' &&
+                operator != '^' &&
+                operator != 's'
+            ) {
+                System.out.println("Invalid operation.");
+                return;
+            }
 
             double result;
 
+            // Square root requires only one number
             if (operator == 's') {
 
                 System.out.print("Enter number: ");
                 double number = scanner.nextDouble();
 
                 if (number >= 0) {
-                    result = Math.sqrt(number);
+
+                    result = squareRoot(number);
+
                     System.out.println("Result: " + result);
+
                 } else {
+
                     System.out.println(
-                        "Cannot calculate square root of negative number."
+                        "Cannot calculate square root of a negative number."
                     );
                 }
 
             } else {
 
+                // All other operations require two numbers
                 System.out.print("Enter first number: ");
                 double num1 = scanner.nextDouble();
 
@@ -44,34 +69,42 @@ public class Calculator {
                 switch (operator) {
 
                     case '+':
-                        result = num1 + num2;
+                        result = add(num1, num2);
                         System.out.println("Result: " + result);
                         break;
 
                     case '-':
-                        result = num1 - num2;
+                        result = subtract(num1, num2);
                         System.out.println("Result: " + result);
                         break;
 
                     case '*':
-                        result = num1 * num2;
+                        result = multiply(num1, num2);
                         System.out.println("Result: " + result);
                         break;
 
                     case '/':
                         if (num2 != 0) {
-                            result = num1 / num2;
+
+                            result = divide(num1, num2);
+
                             System.out.println("Result: " + result);
+
                         } else {
+
                             System.out.println("Cannot divide by zero.");
                         }
                         break;
 
                     case '%':
                         if (num2 != 0) {
-                            result = num1 % num2;
+
+                            result = modulus(num1, num2);
+
                             System.out.println("Result: " + result);
+
                         } else {
+
                             System.out.println(
                                 "Cannot perform modulus by zero."
                             );
@@ -79,7 +112,7 @@ public class Calculator {
                         break;
 
                     case '^':
-                        result = Math.pow(num1, num2);
+                        result = power(num1, num2);
                         System.out.println("Result: " + result);
                         break;
 
@@ -93,9 +126,48 @@ public class Calculator {
             System.out.println(
                 "Invalid input. Please enter a valid number."
             );
-
         }
+    }
 
-        scanner.close();
+
+    // Addition
+    public static double add(double a, double b) {
+        return a + b;
+    }
+
+
+    // Subtraction
+    public static double subtract(double a, double b) {
+        return a - b;
+    }
+
+
+    // Multiplication
+    public static double multiply(double a, double b) {
+        return a * b;
+    }
+
+
+    // Division
+    public static double divide(double a, double b) {
+        return a / b;
+    }
+
+
+    // Modulus
+    public static double modulus(double a, double b) {
+        return a % b;
+    }
+
+
+    // Power
+    public static double power(double a, double b) {
+        return Math.pow(a, b);
+    }
+
+
+    // Square Root
+    public static double squareRoot(double number) {
+        return Math.sqrt(number);
     }
 }
