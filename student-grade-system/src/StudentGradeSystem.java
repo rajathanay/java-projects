@@ -6,7 +6,7 @@ public class StudentGradeSystem {
 
         try (Scanner scanner = new Scanner(System.in)) {
 
-            System.out.println("   STUDENT GRADE MANAGEMENT");
+            System.out.println("STUDENT GRADE MANAGEMENT");
 
             
             System.out.print("No of students do you want to enter? ");
@@ -51,16 +51,16 @@ public class StudentGradeSystem {
 
 
             if (averages[i] >= 90) {
-                  grades[i] = "A";
+            grades[i] = "A";
 
             } else if (averages[i] >= 80) {
-                       grades[i] = "B";
+            grades[i] = "B";
 
             } else if (averages[i] >= 70) {
-                       grades[i] = "C";
+            grades[i] = "C";
 
             } else if (averages[i] <= 50) {
-                       grades[i] = "F";
+            grades[i] = "F";
 }
             }
 
@@ -78,7 +78,7 @@ public class StudentGradeSystem {
                 System.out.println("Total Marks: " + totals[i]);
 
                 System.out.printf("Average Marks: %.2f%n", averages[i]);
-                
+
                 System.out.println("Grade: " + grades[i]);
             }
 
