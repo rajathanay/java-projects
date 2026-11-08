@@ -1,0 +1,9 @@
+[
+  {
+    "rollNumber": 101,
+    "name": "Thanay",
+    "dateOfBirth": "2001-09-21",
+    "department": "COMPUTER_SCIENCE",
+    "marks": 90.0
+  }
+]
